@@ -107,6 +107,9 @@ namespace Telegram.Bot
                 case UpdateType.EditedMessage:
                     OnMessageEdited?.Invoke(this, e);
                     break;
+                case UpdateType.ChannelPost:
+                    OnChannelPost?.Invoke(this, e);
+                    break;
             }
         }
 
@@ -149,6 +152,11 @@ namespace Telegram.Bot
         /// Occurs when an error occurs during the background update pooling.
         /// </summary>
         public event EventHandler<ReceiveGeneralErrorEventArgs> OnReceiveGeneralError;
+
+        /// <summary>
+        /// Occurs when <see cref="Message"/> is sent from a channel.
+        /// </summary>
+        public event EventHandler<ChannelPostEventArgs> OnChannelPost;
 
         #endregion
 
